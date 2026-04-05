@@ -4,9 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hormuz Fertilizer Shock — Country Vulnerability Index</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"
-        integrity="sha512-4R4bTUMpHC7d8SRDPtFpLONALLYGmtTjMPE4ZBXNIpEkVLJi8V8bJsMR1N1z4wjeMsMr7rMDJxKhFKgJXEvw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0A1520; overflow: hidden; }
@@ -76,12 +74,19 @@
     displaylogo: false
   };
 
+  var hideFallback = function() {
+    document.getElementById('fallback').style.display = 'none';
+  };
   if (typeof Plotly === 'undefined') {
     document.getElementById('fallback').style.display = 'block';
-    // Try bundled fallback
     var s = document.createElement('script');
     s.src = 'https://cdn.plot.ly/plotly-2.35.2.min.js';
-    s.onload = function() { Plotly.newPlot('map', figData.data, figData.layout, config); };
+    s.onload = function() {
+      Plotly.newPlot('map', figData.data, figData.layout, config).then(hideFallback);
+    };
+    s.onerror = function() {
+      document.getElementById('fallback').innerHTML = 'Failed to load map library.<br>Please check your internet connection.';
+    };
     document.head.appendChild(s);
   } else {
     Plotly.newPlot('map', figData.data, figData.layout, config);
