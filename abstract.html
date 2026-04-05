@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abstract — Hormuz Fertilizer Shock: Country Vulnerability Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:       #0A1520;
+    --bg2:      #0f1e2e;
+    --bg3:      #162030;
+    --amber:    #C8A000;
+    --amber-dim:#7a6100;
+    --red:      #C00000;
+    --green:    #2E7D32;
+    --orange:   #D4622A;
+    --text:     #E8DCC8;
+    --muted:    #7A8FA0;
+    --border:   rgba(200,160,0,0.18);
+    --border2:  rgba(232,220,200,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    padding-top: 44px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    height: 44px;
+    background: rgba(10,21,32,0.93);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px;
+  }
+  nav .brand {
+    font-size: 11px; letter-spacing: 0.18em; color: var(--amber);
+    text-decoration: none; text-transform: uppercase; font-weight: 600;
+  }
+  nav .nav-links { display: flex; gap: 28px; }
+  nav .nav-links a {
+    font-size: 10px; letter-spacing: 0.16em; color: var(--muted);
+    text-decoration: none; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    border-bottom: 1px solid var(--border);
+    padding: 72px 28px 56px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .hero .eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; color: var(--amber);
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--amber); }
+  .hero .subtitle {
+    font-size: 12px; letter-spacing: 0.14em; color: var(--muted);
+    text-transform: uppercase; margin-bottom: 36px;
+    border-left: 2px solid var(--amber); padding-left: 12px;
+  }
+  .hero .abstract-body {
+    max-width: 680px;
+    font-size: 14px; line-height: 1.85;
+    color: #C4B89A;
+  }
+  .hero .abstract-body p + p { margin-top: 16px; }
+  .hero .meta {
+    margin-top: 32px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+    font-size: 10px; letter-spacing: 0.12em; color: var(--muted);
+    text-transform: uppercase;
+  }
+  .hero .meta span b { color: var(--amber); font-weight: 600; }
+
+  /* ── SECTION ── */
+  section {
+    max-width: 960px; margin: 0 auto;
+    padding: 56px 28px;
+    border-bottom: 1px solid var(--border2);
+  }
+  section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 0.06em;
+    color: var(--text); margin-bottom: 4px;
+  }
+  section .section-sub {
+    font-size: 10px; letter-spacing: 0.16em; color: var(--muted);
+    text-transform: uppercase; margin-bottom: 36px;
+    padding-left: 0;
+  }
+
+  /* ── AXIS CARDS ── */
+  .axis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .axis-card {
+    background: var(--bg2);
+    padding: 28px 24px;
+  }
+  .axis-label {
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 8px; font-weight: 600;
+  }
+  .axis-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.05em;
+    color: var(--text); margin-bottom: 14px; line-height: 1;
+  }
+  .axis-desc {
+    font-size: 13px; line-height: 1.75; color: #A09080;
+    margin-bottom: 20px;
+  }
+  .axis-vars { list-style: none; }
+  .axis-vars li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 6px 0;
+    border-top: 1px solid var(--border2);
+    font-size: 11px; color: var(--muted);
+  }
+  .axis-vars li .var-name { color: #B8A888; }
+  .axis-vars li .var-wt {
+    font-weight: 600; color: var(--amber); font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FORMULA ── */
+  .formula-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    margin-top: 36px;
+    font-size: 13px;
+  }
+  .formula-box .f-label {
+    font-size: 9px; letter-spacing: 0.2em; color: var(--amber);
+    text-transform: uppercase; margin-bottom: 14px; font-weight: 600;
+  }
+  .formula-box .f-eq {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 0.04em; color: var(--text);
+    margin-bottom: 14px; line-height: 1.3;
+  }
+  .formula-box .f-note {
+    font-size: 11px; color: var(--muted); line-height: 1.7;
+  }
+
+  /* ── TIERS TABLE ── */
+  .tier-table {
+    width: 100%; border-collapse: collapse; margin-top: 8px;
+    font-size: 12px;
+  }
+  .tier-table th {
+    text-align: left; padding: 8px 12px;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .tier-table td {
+    padding: 11px 12px; border-bottom: 1px solid var(--border2);
+    color: #B0A090; vertical-align: top;
+  }
+  .tier-table tr:last-child td { border-bottom: none; }
+  .tier-badge {
+    display: inline-block;
+    padding: 2px 8px; font-size: 10px; letter-spacing: 0.1em;
+    font-weight: 600; font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+  }
+  .t-cooked  { color: #6B0000; }
+  .t-critical{ color: #C00000; }
+  .t-stressed{ color: #D4622A; }
+  .t-exposed { color: #C8A000; }
+  .t-insulated{color: #2E7D32; }
+
+  .tier-count {
+    display: inline-block; width: 28px; text-align: center;
+    font-weight: 600; color: var(--text);
+  }
+
+  /* ── CAVEAT ── */
+  .caveat {
+    margin-top: 36px;
+    border-left: 3px solid var(--amber-dim);
+    padding: 14px 18px;
+    background: rgba(200,160,0,0.04);
+    font-size: 12px; line-height: 1.75; color: var(--muted);
+  }
+  .caveat b { color: #B09050; }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 960px; margin: 0 auto;
+    padding: 36px 28px 56px;
+    font-size: 10px; letter-spacing: 0.1em; color: var(--muted);
+    text-transform: uppercase;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  footer a { color: var(--amber); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* animations */
+  @keyframes fadein { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .hero, section { animation: fadein 0.5s ease both; }
+  section:nth-child(2) { animation-delay: 0.05s; }
+  section:nth-child(3) { animation-delay: 0.10s; }
+  section:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">COOKED INDEX</a>
+  <div class="nav-links">
+    <a href="index.html">MAP</a>
+    <a href="abstract.html" class="active">ABSTRACT</a>
+    <a href="data.html">DATA & FILES</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">April 2026 &nbsp;·&nbsp; Strait of Hormuz Crisis &nbsp;·&nbsp; Agricultural Fertilizer Supply Chain</div>
+  <h1>HORMUZ<br><span>FERTILIZER</span><br>SHOCK</h1>
+  <div class="subtitle">Country Vulnerability Index — v4</div>
+  <div class="abstract-body">
+    <p>
+      The Strait of Hormuz is the world's most consequential maritime chokepoint for fertilizer trade.
+      The GCC states — Qatar, Saudi Arabia, UAE, Oman, Kuwait, Bahrain — plus Iran and Iraq collectively
+      export a dominant share of global urea, ammonia, and potassium fertilizers through its 33-kilometre
+      navigable channel. A sustained closure, whether from conflict, blockade, or deliberate interdiction,
+      would not merely raise agricultural input costs: it would sever supply chains that underpin food
+      production for billions of people.
+    </p>
+    <p>
+      This index asks a precise question: <em>given that disruption, which countries face structural
+      food security failure — and which can absorb the shock?</em> It covers 121 countries after
+      applying minimum import thresholds and excluding Hormuz-zone producers, micro-states, and
+      commodity trading hubs. It is a relative vulnerability ranking for a specific crisis scenario,
+      not a general food security index.
+    </p>
+    <p>
+      The methodology combines three independent structural dimensions — Vulnerability, Resilience,
+      and Adaptability — each constructed from primary trade, agricultural, and financial data
+      (UN Comtrade 2023, FAOSTAT 2023, IMF WEO April 2025, World Bank 2023, USDA ERS/PSD 2023).
+      A timing multiplier adjusts final scores for crop calendar proximity as of April 2026.
+    </p>
+  </div>
+  <div class="meta">
+    <span><b>121</b> countries ranked</span>
+    <span><b>3</b> structural axes</span>
+    <span><b>13</b> component variables</span>
+    <span><b>v4</b> — April 2026</span>
+    <span>Author: <b>Bored industrial engineer</b></span>
+  </div>
+</div>
+
+<!-- FORMULA -->
+<section>
+  <h2>Index Formula</h2>
+  <div class="section-sub">Aggregation structure & weighting rationale</div>
+
+  <div class="formula-box">
+    <div class="f-label">Final Score</div>
+    <div class="f-eq">
+      SCORE = [ Axis 1 + Axis 2 + Axis 3 ] / 3 × Timing Multiplier
+    </div>
+    <div class="f-note">
+      Each axis is scored 0–1 (0 = most exposed / weakest, 1 = most resilient / strongest).
+      The timing multiplier is a scalar in [0.80, 1.00] applied after averaging.
+      Arithmetic averaging was chosen over a geometric mean: the multiplicative structure
+      catastrophically penalises any single weak axis regardless of strength elsewhere.
+      Missing values are imputed at the dataset median — unknown ≠ bad.
+    </div>
+  </div>
+
+  <div class="formula-box" style="margin-top: 12px;">
+    <div class="f-label">Axis 1 decomposition</div>
+    <div class="f-eq">Axis 1 (Vulnerability) = 0.60 × Exposure + 0.40 × Transmission</div>
+    <div class="f-note">
+      Exposure measures physical routing through Hormuz. Transmission measures how rapidly
+      a price shock propagates through a country's food system to population-level insecurity.
+    </div>
+  </div>
+</section>
+
+<!-- THREE AXES -->
+<section>
+  <h2>The Three Axes</h2>
+  <div class="section-sub">Component variables and weights</div>
+
+  <div class="axis-grid">
+
+    <!-- AXIS 1 -->
+    <div class="axis-card">
+      <div class="axis-label">Axis 1 &nbsp;·&nbsp; 0.60 × Exposure + 0.40 × Transmission</div>
+      <div class="axis-name">VULNERABILITY</div>
+      <div class="axis-desc">
+        How directly and severely does the shock reach a country's food system?
+        Exposure captures physical supply chain routing; transmission captures
+        how intensively agriculture depends on that fertilizer and how quickly
+        price signals reach the population.
+      </div>
+      <div class="axis-label" style="margin-top: 4px; margin-bottom: 6px;">Exposure sub-score</div>
+      <ul class="axis-vars">
+        <li><span class="var-name">Hormuz Fertilizer Dependence</span><span class="var-wt">50%</span></li>
+        <li><span class="var-name">Supplier Concentration (HHI)</span><span class="var-wt">20%</span></li>
+        <li><span class="var-name">Upstream Input Dependence</span><span class="var-wt">15%</span></li>
+        <li><span class="var-name">Hormuz LNG Exposure</span><span class="var-wt">15%</span></li>
+      </ul>
+      <div class="axis-label" style="margin-top: 14px; margin-bottom: 6px;">Transmission sub-score</div>
+      <ul class="axis-vars">
+        <li><span class="var-name">Food Expenditure Share <em style="color:#5a7a8a">[new v4]</em></span><span class="var-wt">30%</span></li>
+        <li><span class="var-name">Yield Gap from Optimal</span><span class="var-wt">30%</span></li>
+        <li><span class="var-name">Crop Mix Sensitivity</span><span class="var-wt">25%</span></li>
+        <li><span class="var-name">Urban / Rural Ratio</span><span class="var-wt">15%</span></li>
+      </ul>
+    </div>
+
+    <!-- AXIS 2 -->
+    <div class="axis-card">
+      <div class="axis-label">Axis 2</div>
+      <div class="axis-name">RESILIENCE</div>
+      <div class="axis-desc">
+        What financial and physical buffers can absorb the shock? Foreign exchange
+        reserves, fiscal capacity, and existing food stocks determine how long a
+        country can sustain imports at elevated prices or substitute domestically.
+        Income-based floors correct for systematic distortions in reserve-currency
+        issuing and major financial centre economies.
+      </div>
+      <ul class="axis-vars">
+        <li><span class="var-name">FX Reserves (months of import cover)</span><span class="var-wt">35%</span></li>
+        <li><span class="var-name">Fiscal Balance (% GDP)</span><span class="var-wt">35%</span></li>
+        <li><span class="var-name">Food Reserves (weighted days of supply)</span><span class="var-wt">30%</span></li>
+      </ul>
+      <div class="axis-desc" style="margin-top: 18px; font-size: 12px; color: #6a7a6a;">
+        Food reserves excluded (not imputed) for 46 countries with no USDA PSD data;
+        FX + Fiscal renormalized to 50%/50%. Russia: FX excluded entirely
+        (~$300B frozen); axis computed from Fiscal + Food only.
+      </div>
+    </div>
+
+    <!-- AXIS 3 -->
+    <div class="axis-card">
+      <div class="axis-label">Axis 3</div>
+      <div class="axis-name">ADAPTABILITY</div>
+      <div class="axis-desc">
+        What structural escape valves exist? Domestic ammonia production, diversified
+        supplier relationships, caloric self-sufficiency, and flexible crop systems
+        reduce dependence on the disrupted supply chain.
+      </div>
+      <ul class="axis-vars">
+        <li><span class="var-name">Domestic Ammonia Capacity (feedstock-adj.)</span><span class="var-wt">30%</span></li>
+        <li><span class="var-name">Caloric Self-Sufficiency (IDR) <em style="color:#5a7a8a">[new v4]</em></span><span class="var-wt">20%</span></li>
+        <li><span class="var-name">Alternative Supplier Diversity</span><span class="var-wt">20%</span></li>
+        <li><span class="var-name">Crop Substitution Flexibility (Shannon H)</span><span class="var-wt">15%</span></li>
+        <li><span class="var-name">Input Reduction Tolerance</span><span class="var-wt">10%</span></li>
+        <li><span class="var-name">Port / Infrastructure (LPI)</span><span class="var-wt">5%</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIERS -->
+<section>
+  <h2>Score Distribution & Tiers</h2>
+  <div class="section-sub">121-country final distribution · v4</div>
+
+  <table class="tier-table">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Score Range</th>
+        <th>Count</th>
+        <th>Interpretation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge t-cooked">COOKED</span></td>
+        <td>≤ 0.486</td>
+        <td><span class="tier-count">22</span></td>
+        <td>Structural failure likely regardless of government response</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t-critical">CRITICAL</span></td>
+        <td>≤ 0.541</td>
+        <td><span class="tier-count">35</span></td>
+        <td>High probability of food security crisis; needs rapid external support</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t-stressed">STRESSED</span></td>
+        <td>≤ 0.585</td>
+        <td><span class="tier-count">19</span></td>
+        <td>Significant disruption, price shocks, rationing likely but manageable</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t-exposed">EXPOSED</span></td>
+        <td>≤ 0.643</td>
+        <td><span class="tier-count">22</span></td>
+        <td>Feels the shock, absorbs it with difficulty; no famine risk</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t-insulated">INSULATED</span></td>
+        <td>&gt; 0.643</td>
+        <td><span class="tier-count">23</span></td>
+        <td>Minimal real-world food security impact</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="caveat">
+    <b>Tier thresholds</b> are set at the 10th, 32nd, 67th, and 87th percentiles of the
+    actual score distribution — relative rankings within this sample, not absolute food
+    security standards. The score distribution has a mean of ~0.57 and σ ≈ 0.08.
+    <br><br>
+    <b>"Insulated" does not mean unaffected</b> — it means the structural food security
+    impact is minimal <em>relative to other countries in the sample.</em> This index is
+    designed for a specific crisis scenario. It is not a general food security index.
+  </div>
+</section>
+
+<footer>
+  <div>Hormuz Fertilizer Shock · Country Vulnerability Index v4 · April 2026</div>
+  <div>
+    <a href="data.html">Download data & methodology →</a>
+  </div>
+</footer>
+
+</body>
+</html>
