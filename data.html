@@ -8,171 +8,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --bg:       #0A1520;
-    --bg2:      #0f1e2e;
-    --bg3:      #162030;
-    --amber:    #C8A000;
-    --amber-dim:#7a6100;
-    --red:      #C00000;
-    --green:    #2E7D32;
-    --text:     #E8DCC8;
-    --muted:    #7A8FA0;
-    --border:   rgba(200,160,0,0.18);
-    --border2:  rgba(232,220,200,0.08);
+    --bg:     #0A1520; --bg2:    #0f1e2e; --bg3:    #162030;
+    --amber:  #C8A000; --text:   #E8DCC8; --muted:  #7A8FA0;
+    --border: rgba(200,160,0,0.18); --border2:rgba(232,220,200,0.08);
   }
-
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    padding-top: 44px;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-    height: 44px;
-    background: rgba(10,21,32,0.93);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 28px;
-  }
-  nav .brand {
-    font-size: 11px; letter-spacing: 0.18em; color: var(--amber);
-    text-decoration: none; text-transform: uppercase; font-weight: 600;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 14px; line-height: 1.7; padding-top: 44px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; height: 44px; background: rgba(10,21,32,0.93); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
+  nav .brand { font-size: 11px; letter-spacing: 0.18em; color: var(--amber); text-decoration: none; text-transform: uppercase; font-weight: 600; }
   nav .nav-links { display: flex; gap: 28px; }
-  nav .nav-links a {
-    font-size: 10px; letter-spacing: 0.16em; color: var(--muted);
-    text-decoration: none; text-transform: uppercase; font-weight: 500;
-    transition: color 0.2s;
-  }
+  nav .nav-links a { font-size: 10px; letter-spacing: 0.16em; color: var(--muted); text-decoration: none; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
   nav .nav-links a:hover, nav .nav-links a.active { color: var(--text); }
-
-  /* ── PAGE HEADER ── */
-  .page-header {
-    max-width: 960px; margin: 0 auto;
-    padding: 64px 28px 48px;
-    border-bottom: 1px solid var(--border);
-  }
-  .page-header .eyebrow {
-    font-size: 10px; letter-spacing: 0.22em; color: var(--amber);
-    text-transform: uppercase; margin-bottom: 16px;
-  }
-  .page-header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 0.95; letter-spacing: 0.03em;
-    color: var(--text); margin-bottom: 20px;
-  }
-  .page-header p {
-    max-width: 600px;
-    font-size: 13px; line-height: 1.8; color: #A09080;
-  }
-
-  /* ── FILE GRID ── */
-  .file-section {
-    max-width: 960px; margin: 0 auto;
-    padding: 48px 28px;
-    border-bottom: 1px solid var(--border2);
-  }
-  .file-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px; letter-spacing: 0.08em;
-    color: var(--amber); margin-bottom: 4px;
-  }
-  .file-section .sec-sub {
-    font-size: 10px; letter-spacing: 0.14em; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 28px;
-  }
-
-  .file-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .file-item {
-    background: var(--bg2);
-    padding: 22px 24px;
-    display: flex; align-items: flex-start; gap: 20px;
-    transition: background 0.15s;
-  }
+  .page-header { max-width: 800px; margin: 0 auto; padding: 64px 28px 48px; border-bottom: 1px solid var(--border); }
+  .page-header .eyebrow { font-size: 10px; letter-spacing: 0.22em; color: var(--amber); text-transform: uppercase; margin-bottom: 16px; }
+  .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); line-height: 0.95; letter-spacing: 0.03em; color: var(--text); margin-bottom: 20px; }
+  .page-header p { max-width: 560px; font-size: 13px; line-height: 1.8; color: #A09080; }
+  .file-list { max-width: 800px; margin: 0 auto; padding: 40px 28px 0; display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .file-item { background: var(--bg2); padding: 26px 24px; display: flex; align-items: flex-start; gap: 20px; transition: background 0.15s; }
   .file-item:hover { background: var(--bg3); }
-
-  .file-icon {
-    flex-shrink: 0;
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px; letter-spacing: 0.06em;
-    border: 1px solid;
-    margin-top: 2px;
-  }
+  .file-icon { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 0.06em; border: 1px solid; margin-top: 2px; }
   .icon-xlsx { color: #2E7D32; border-color: rgba(46,125,50,0.4); }
   .icon-pdf  { color: #C00000; border-color: rgba(192,0,0,0.4); }
-  .icon-html { color: #C8A000; border-color: rgba(200,160,0,0.4); }
-
   .file-meta { flex: 1; min-width: 0; }
-  .file-name {
-    font-size: 13px; font-weight: 600; color: var(--text);
-    margin-bottom: 4px; word-break: break-all;
-  }
-  .file-desc {
-    font-size: 12px; color: #7A8890; line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  .file-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag {
-    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 2px 7px; border: 1px solid var(--border2); color: var(--muted);
-  }
-
-  .file-dl {
-    flex-shrink: 0; align-self: center;
-    text-decoration: none;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--amber); border: 1px solid var(--border);
-    padding: 7px 14px;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
-  }
+  .file-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .file-desc { font-size: 12px; color: #7A8890; line-height: 1.65; }
+  .file-dl { flex-shrink: 0; align-self: center; text-decoration: none; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); border: 1px solid var(--border); padding: 8px 16px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
   .file-dl:hover { background: var(--amber); color: var(--bg); }
-
-  /* ── METHODOLOGY NOTE ── */
-  .method-note {
-    max-width: 960px; margin: 0 auto;
-    padding: 36px 28px 56px;
-  }
-  .method-box {
-    border: 1px solid var(--border);
-    padding: 24px;
-    background: rgba(200,160,0,0.03);
-  }
-  .method-box .m-label {
-    font-size: 9px; letter-spacing: 0.2em; color: var(--amber);
-    text-transform: uppercase; margin-bottom: 10px; font-weight: 600;
-  }
-  .method-box p {
-    font-size: 12px; line-height: 1.75; color: var(--muted);
-  }
-  .method-box p + p { margin-top: 10px; }
-
-  /* ── FOOTER ── */
-  footer {
-    max-width: 960px; margin: 0 auto;
-    padding: 24px 28px 48px;
-    font-size: 10px; letter-spacing: 0.1em; color: var(--muted);
-    text-transform: uppercase;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    border-top: 1px solid var(--border2);
-  }
+  .note { max-width: 800px; margin: 1px auto 0; padding: 28px 28px 48px; font-size: 11px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border2); }
+  footer { max-width: 800px; margin: 0 auto; padding: 0 28px 48px; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   footer a { color: var(--amber); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-
   @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  .page-header, .file-section, .method-note { animation: fadein 0.45s ease both; }
+  .page-header, .file-list, .note { animation: fadein 0.45s ease both; }
 </style>
 </head>
 <body>
@@ -188,288 +55,50 @@
 
 <div class="page-header">
   <div class="eyebrow">Open Data</div>
-  <h1>DATA<br>& FILES</h1>
-  <p>
-    All underlying data, sub-index workbooks, and methodology documentation
-    are provided for replication and independent analysis. Files are Excel
-    workbooks (.xlsx) unless otherwise noted.
-  </p>
+  <h1>DATA<br>&amp; FILES</h1>
+  <p>Final verified outputs for the Hormuz Fertilizer Shock Country Vulnerability Index v4. Provided for replication and independent analysis.</p>
 </div>
 
-<!-- PRIMARY OUTPUT -->
-<div class="file-section">
-  <h2>Primary Output</h2>
-  <div class="sec-sub">Final scored index</div>
-  <div class="file-list">
+<div class="file-list">
 
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_vulnerability_index_v4_russia_FINAL.xlsx</div>
-        <div class="file-desc">
-          Master index table. 121 countries ranked by final score. Contains all three axis scores,
-          timing multiplier, tier classification, and pre-timing score. Russia included as annotated
-          entry (#106). Primary deliverable for citation and replication.
-        </div>
-        <div class="file-tags">
-          <span class="tag">121 countries</span>
-          <span class="tag">Final scores</span>
-          <span class="tag">All axes</span>
-          <span class="tag">v4</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_vulnerability_index_v4_russia_FINAL.xlsx" download>↓ Download</a>
+  <div class="file-item">
+    <div class="file-icon icon-xlsx">XLSX</div>
+    <div class="file-meta">
+      <div class="file-name">hormuz_vulnerability_index_v4_russia_FINAL.xlsx</div>
+      <div class="file-desc">Master ranked index. 121 countries scored across all three axes (Vulnerability, Resilience, Adaptability), with timing multiplier, tier classification, and full component breakdown. Russia included as annotated entry. Primary file for citation and replication.</div>
     </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_subindex_verification_FINAL.xlsx</div>
-        <div class="file-desc">
-          Sub-index cross-verification workbook. Side-by-side comparison of all component scores
-          across the three axes for each country. Used to audit final aggregation.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Verification</span>
-          <span class="tag">All components</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_subindex_verification_FINAL.xlsx" download>↓ Download</a>
-    </div>
-
+    <a class="file-dl" href="hormuz_vulnerability_index_v4_russia_FINAL.xlsx" download>&#x2193; Download</a>
   </div>
+
+  <div class="file-item">
+    <div class="file-icon icon-xlsx">XLSX</div>
+    <div class="file-meta">
+      <div class="file-name">hormuz_subindex_verification_FINAL.xlsx</div>
+      <div class="file-desc">Sub-index verification workbook. Side-by-side component scores for all 121 countries across every variable in the three axes. Used to audit the final aggregation.</div>
+    </div>
+    <a class="file-dl" href="hormuz_subindex_verification_FINAL.xlsx" download>&#x2193; Download</a>
+  </div>
+
+  <div class="file-item">
+    <div class="file-icon icon-pdf">PDF</div>
+    <div class="file-meta">
+      <div class="file-name">hormuz_index_methodology_v4_FINAL.pdf</div>
+      <div class="file-desc">16-page methodology document. Covers the conceptual framework, index formula, all variable definitions and scoring functions, data sources, coverage gaps, and a summary of key judgment calls with sensitivity ratings. Required reading before drawing policy conclusions from the index.</div>
+    </div>
+    <a class="file-dl" href="hormuz_index_methodology_v4_FINAL.pdf" download>&#x2193; Download</a>
+  </div>
+
 </div>
 
-<!-- METHODOLOGY -->
-<div class="file-section">
-  <h2>Methodology</h2>
-  <div class="sec-sub">Conceptual framework, variable definitions, data notes, judgment calls</div>
-  <div class="file-list">
-
-    <div class="file-item">
-      <div class="file-icon icon-pdf">DOC</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_index_methodology_v4_FINAL.pdf</div>
-        <div class="file-desc">
-          16-page methodology document covering conceptual framework, index formula, all variable
-          definitions, scoring functions, data sources, coverage gaps, income-based buffer floor
-          rationale, Russia annotation, and a summary of key judgment calls with sensitivity ratings.
-          Required reading before drawing policy conclusions from the index.
-        </div>
-        <div class="file-tags">
-          <span class="tag">16 pages</span>
-          <span class="tag">v4 — April 2026</span>
-          <span class="tag">Data notes</span>
-          <span class="tag">Judgment calls</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_index_methodology_v4_FINAL.pdf" download>↓ Download</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- AXIS WORKBOOKS -->
-<div class="file-section">
-  <h2>Axis Workbooks</h2>
-  <div class="sec-sub">Component layer data and scoring</div>
-  <div class="file-list">
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_dependence_FINAL_v2.xlsx</div>
-        <div class="file-desc">
-          Axis 1 — Exposure: Hormuz fertilizer dependence ratios by country. Constructed from
-          UN Comtrade 2023 HS 3102–3105 export data for 6 GCC reporters plus Iran/Iraq mirror data.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 1 · Exposure</span>
-          <span class="tag">Comtrade 2023</span>
-          <span class="tag">HS 3102–3105</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_dependence_FINAL_v2.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hhi_upstream_dep.xlsx</div>
-        <div class="file-desc">
-          Supplier concentration (HHI) and upstream input dependence scores. HHI computed from
-          all-partner import matrix (Comtrade 2023). Upstream dependence from FAOSTAT 2023 nutrient
-          production data.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 1 · Exposure</span>
-          <span class="tag">HHI</span>
-          <span class="tag">Upstream dependence</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hhi_upstream_dep.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_lng_ammonia.xlsx</div>
-        <div class="file-desc">
-          Hormuz LNG exposure for domestic ammonia production. Full bilateral LNG trade data
-          (UN Comtrade 2023 HS 271111) for all 121 index countries. v4: replaces manual
-          three-tier assignment with computed scores across full country coverage.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 1 · Exposure</span>
-          <span class="tag">Axis 3 · Adaptability</span>
-          <span class="tag">LNG · HS 271111</span>
-          <span class="tag">121 countries verified</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_lng_ammonia.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">transmission_layer.xlsx</div>
-        <div class="file-desc">
-          Axis 1 — Transmission sub-score. Food expenditure share (USDA ERS 2023), yield gap
-          from optimal (FAOSTAT), crop mix sensitivity tiers, and urban/rural ratio. Includes
-          imputation flags for 37 countries missing ERS food expenditure data.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 1 · Transmission</span>
-          <span class="tag">Food expenditure</span>
-          <span class="tag">Yield gap</span>
-          <span class="tag">Crop mix</span>
-        </div>
-      </div>
-      <a class="file-dl" href="transmission_layer.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">buffer_layer_v3.xlsx</div>
-        <div class="file-desc">
-          Axis 2 — Resilience: FX reserves (World Bank 2023), fiscal balance (IMF WEO April 2025),
-          food reserves (USDA PSD 2022/23, 75 countries). Includes income-based floor calculations
-          for HIC/UMIC countries and Russia's FX exclusion annotation.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 2 · Resilience</span>
-          <span class="tag">FX reserves</span>
-          <span class="tag">Fiscal balance</span>
-          <span class="tag">Food stocks · 75 countries</span>
-        </div>
-      </div>
-      <a class="file-dl" href="buffer_layer_v3.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">adaptation_layer_v2.xlsx</div>
-        <div class="file-desc">
-          Axis 3 — Adaptability: domestic ammonia capacity, caloric self-sufficiency (FAO cereal IDR,
-          3-yr avg 2021–2023), alternative supplier diversity with Russia/Belarus discount for
-          sanctioning countries, crop substitution entropy (Shannon H, 158 crop types), input
-          reduction tolerance, and LPI infrastructure score.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Axis 3 · Adaptability</span>
-          <span class="tag">Caloric SSR</span>
-          <span class="tag">R/B discount</span>
-          <span class="tag">Shannon entropy</span>
-        </div>
-      </div>
-      <a class="file-dl" href="adaptation_layer_v2.xlsx" download>↓ Download</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- RAW INPUTS -->
-<div class="file-section">
-  <h2>Raw Input Data</h2>
-  <div class="sec-sub">Source data before scoring</div>
-  <div class="file-list">
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_fertilizer_MASTER.xlsx</div>
-        <div class="file-desc">
-          Master raw fertilizer trade data. GCC + Iran/Iraq export flows by destination country,
-          HS 3102–3105, UN Comtrade 2023. Includes mirror data reconstruction for Iran and Iraq
-          with coverage notes.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Raw trade data</span>
-          <span class="tag">GCC + Iran + Iraq</span>
-          <span class="tag">Comtrade 2023</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_fertilizer_MASTER.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_fertilizer_exports_combined.xlsx</div>
-        <div class="file-desc">
-          Combined fertilizer export flows across all Hormuz-zone reporters prior to aggregation.
-          Used as the numerator in Hormuz dependence ratio calculations.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Raw trade data</span>
-          <span class="tag">Combined flows</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_fertilizer_exports_combined.xlsx" download>↓ Download</a>
-    </div>
-
-    <div class="file-item">
-      <div class="file-icon icon-xlsx">XLSX</div>
-      <div class="file-meta">
-        <div class="file-name">hormuz_dependence_pct.xlsx</div>
-        <div class="file-desc">
-          Intermediate: Hormuz dependence percentage calculations by country before final
-          scoring and normalization.
-        </div>
-        <div class="file-tags">
-          <span class="tag">Intermediate</span>
-          <span class="tag">Dependence %</span>
-        </div>
-      </div>
-      <a class="file-dl" href="hormuz_dependence_pct.xlsx" download>↓ Download</a>
-    </div>
-
-  </div>
-</div>
-
-<!-- NOTE -->
-<div class="method-note">
-  <div class="method-box">
-    <div class="m-label">Replication note</div>
-    <p>
-      All files are provided as-is. Data sources span 2021–2025 depending on availability;
-      primary trade data (Comtrade) is 2023. The 2022/2023 baseline is intentional —
-      the index measures structural vulnerability, not the current crisis-distorted state.
-    </p>
-    <p>
-      Known data gaps: Iran and Iraq flows reconstructed from mirror data (true Hormuz dependence
-      for Pakistan, India, and Afghanistan may be 5–15pp higher than shown). 46 countries have no
-      USDA PSD food reserve data. 37 countries have imputed food expenditure share at dataset median (22.9%).
-      See methodology document for full discussion of limitations.
-    </p>
-  </div>
+<div class="note">
+  Data sources span 2021&ndash;2025. Primary trade data (UN Comtrade) is 2023. The pre-crisis baseline is intentional &mdash;
+  the index measures structural vulnerability, not the current crisis-distorted state.
+  See the methodology document for full discussion of data limitations and judgment calls.
 </div>
 
 <footer>
-  <div>Hormuz Fertilizer Shock · Country Vulnerability Index v4 · April 2026</div>
-  <div><a href="abstract.html">← Read the abstract</a></div>
+  <div>Hormuz Fertilizer Shock &nbsp;&middot;&nbsp; Country Vulnerability Index v4 &nbsp;&middot;&nbsp; April 2026</div>
+  <div><a href="abstract.html">&larr; Read the abstract</a></div>
 </footer>
 
 </body>
