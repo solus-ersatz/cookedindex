@@ -20,13 +20,6 @@ A 121-country vulnerability index built from UN Comtrade, FAOSTAT, IMF WEO, Worl
 | `hormuz_vulnerability_index_v4_russia_FINAL.xlsx` | Master ranked index, 121 countries |
 | `hormuz_index_methodology_v4_FINAL.pdf` | Full 16-page methodology |
 | `hormuz_subindex_verification_FINAL.xlsx` | Component score cross-check |
-| `buffer_layer_v3.xlsx` | Axis 2 — Resilience |
-| `adaptation_layer_v2.xlsx` | Axis 3 — Adaptability |
-| `transmission_layer.xlsx` | Axis 1 — Transmission |
-| `hhi_upstream_dep.xlsx` | HHI + Upstream dependence |
-| `hormuz_lng_ammonia.xlsx` | LNG exposure (121 countries, Comtrade 2023) |
-| `hormuz_dependence_FINAL_v2.xlsx` | Hormuz fertilizer dependence ratios |
-| `hormuz_fertilizer_MASTER.xlsx` | Raw GCC + Iran/Iraq trade flows |
 
 ---
 *April 2026 · v4 · Author: bored industrial engineer*
