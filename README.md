@@ -22,4 +22,4 @@ A 121-country vulnerability index built from UN Comtrade, FAOSTAT, IMF WEO, Worl
 | `hormuz_subindex_verification_FINAL.xlsx` | Component score cross-check |
 
 ---
-*April 2026 · v4 · Author: bored industrial engineer*
+*April 2026 · v4 · Author: Solus, a bored industrial engineer*
