@@ -233,6 +233,19 @@
   section:nth-child(3) { animation-delay: 0.10s; }
   section:nth-child(4) { animation-delay: 0.15s; }
 </style>
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Cooked Index">
+  <meta property="og:title"       content="Abstract & Methodology — Cooked Index">
+  <meta property="og:description" content="Methodology overview for the Hormuz Fertilizer Shock Country Vulnerability Index. Three axes: Vulnerability, Resilience, Adaptability. 121 countries, 13 variables.">
+  <meta property="og:url"         content="https://solus-ersatz.github.io/cookedindex/abstract.html">
+  <meta property="og:image"       content="https://solus-ersatz.github.io/cookedindex/preview.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Abstract & Methodology — Cooked Index">
+  <meta name="twitter:description" content="Methodology overview for the Hormuz Fertilizer Shock Country Vulnerability Index. Three axes: Vulnerability, Resilience, Adaptability. 121 countries, 13 variables.">
+  <meta name="twitter:image"       content="https://solus-ersatz.github.io/cookedindex/preview.png">
+  <meta name="description"         content="Methodology overview for the Hormuz Fertilizer Shock Country Vulnerability Index. Three axes: Vulnerability, Resilience, Adaptability. 121 countries, 13 variables.">
 </head>
 <body>
 
@@ -253,19 +266,18 @@
   <div class="abstract-body">
     <p>
       The Strait of Hormuz is the world's most consequential maritime chokepoint for fertilizer trade.
-      The nations surrounding it — Qatar, Saudi Arabia, UAE, Oman, Kuwait, Bahrain, Iran, and Iraq — collectively
+      The GCC states — Qatar, Saudi Arabia, UAE, Oman, Kuwait, Bahrain — plus Iran and Iraq collectively
       export a dominant share of global urea, ammonia, and potassium fertilizers through its 33-kilometre
-      navigable channel. Its current closure, brought on by conflict between the United States and Iran,
-      will have a catastrophic impact on the global agricultural supply chain.
+      navigable channel. A sustained closure, whether from conflict, blockade, or deliberate interdiction,
+      would not merely raise agricultural input costs: it would sever supply chains that underpin food
+      production for billions of people.
     </p>
     <p>
       This index asks a precise question: <em>given that disruption, which countries face structural
       food security failure — and which can absorb the shock?</em> It covers 121 countries after
-      applying minimum import thresholds and excluding the Hormuz countries themselves, micro-states, and
+      applying minimum import thresholds and excluding Hormuz-zone producers, micro-states, and
       commodity trading hubs. It is a relative vulnerability ranking for a specific crisis scenario,
-      not a general food security index. 
-      
-     
+      not a general food security index.
     </p>
     <p>
       The methodology combines three independent structural dimensions — Vulnerability, Resilience,
@@ -273,21 +285,13 @@
       (UN Comtrade 2023, FAOSTAT 2023, IMF WEO April 2025, World Bank 2023, USDA ERS/PSD 2023).
       A timing multiplier adjusts final scores for crop calendar proximity as of April 2026.
     </p>
-    <p>
-      <b>IMPORTANT NOTE:</b> This index should be considered exceptionally optimistic. It assumes that producer nations will not
-     block exports, global trade elsewhere will continue as normal, and that no farmers will be priced out of production by
-     increased input costs. Furthermore, this index does not cover the increase in transportation costs brought on by the
-    simultaneous oil shock from the closure of the strait. Also, the index does <b>NOT</b> cover industrial output or other macroeconomic effects,
-    only agriculture supply chains. 
-     
-    </p>  
   </div>
   <div class="meta">
     <span><b>121</b> countries ranked</span>
     <span><b>3</b> structural axes</span>
     <span><b>13</b> component variables</span>
     <span><b>v4</b> — April 2026</span>
-    <span>Author: <b>Solus</b></span>
+    <span>Author: <b>Bored industrial engineer</b></span>
   </div>
 </div>
 
@@ -333,8 +337,7 @@
       <div class="axis-name">VULNERABILITY</div>
       <div class="axis-desc">
         How directly and severely does the shock reach a country's food system?
-        Exposure captures how dependent a nation is on fertilizer and LNG flows 
-        through the straight of hormuz; transmission captures
+        Exposure captures physical supply chain routing; transmission captures
         how intensively agriculture depends on that fertilizer and how quickly
         price signals reach the population.
       </div>
@@ -347,7 +350,7 @@
       </ul>
       <div class="axis-label" style="margin-top: 14px; margin-bottom: 6px;">Transmission sub-score</div>
       <ul class="axis-vars">
-        <li><span class="var-name">Food Expenditure Share </span><span class="var-wt">30%</span></li>
+        <li><span class="var-name">Food Expenditure Share <em style="color:#5a7a8a">[new v4]</em></span><span class="var-wt">30%</span></li>
         <li><span class="var-name">Yield Gap from Optimal</span><span class="var-wt">30%</span></li>
         <li><span class="var-name">Crop Mix Sensitivity</span><span class="var-wt">25%</span></li>
         <li><span class="var-name">Urban / Rural Ratio</span><span class="var-wt">15%</span></li>
@@ -371,7 +374,7 @@
         <li><span class="var-name">Food Reserves (weighted days of supply)</span><span class="var-wt">30%</span></li>
       </ul>
       <div class="axis-desc" style="margin-top: 18px; font-size: 12px; color: #6a7a6a;">
-        Food reserves excluded (not imputed) for 46 countries with no USDA PSD or FAOSTAT data;
+        Food reserves excluded (not imputed) for 46 countries with no USDA PSD data;
         FX + Fiscal renormalized to 50%/50%. Russia: FX excluded entirely
         (~$300B frozen); axis computed from Fiscal + Food only.
       </div>
@@ -388,7 +391,7 @@
       </div>
       <ul class="axis-vars">
         <li><span class="var-name">Domestic Ammonia Capacity (feedstock-adj.)</span><span class="var-wt">30%</span></li>
-        <li><span class="var-name">Caloric Self-Sufficiency (IDR) </span><span class="var-wt">20%</span></li>
+        <li><span class="var-name">Caloric Self-Sufficiency (IDR) <em style="color:#5a7a8a">[new v4]</em></span><span class="var-wt">20%</span></li>
         <li><span class="var-name">Alternative Supplier Diversity</span><span class="var-wt">20%</span></li>
         <li><span class="var-name">Crop Substitution Flexibility (Shannon H)</span><span class="var-wt">15%</span></li>
         <li><span class="var-name">Input Reduction Tolerance</span><span class="var-wt">10%</span></li>
